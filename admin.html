@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f9fc;
+      padding: 20px;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    form {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px;
+      background: #3498db;
+      border: none;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #2980b9;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📚 Admin Panel</h1>
+  <form id="lessonForm">
+    <label>Title</label>
+    <input type="text" id="title" placeholder="Enter lesson title">
+
+    <label>Description</label>
+    <textarea id="description" placeholder="Enter lesson details"></textarea>
+
+    <label>Upload File</label>
+    <input type="file" id="file">
+
+    <button type="submit">Add Lesson</button>
+  </form>
+
+  <div id="lessonsList"></div>
+
+  <script>
+    const form = document.getElementById('lessonForm');
+    const lessonsList = document.getElementById('lessonsList');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const title = document.getElementById('title').value;
+      const description = document.getElementById('description').value;
+
+      const lessonDiv = document.createElement('div');
+      lessonDiv.innerHTML = `<h3>${title}</h3><p>${description}</p><hr>`;
+      lessonsList.appendChild(lessonDiv);
+
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>
